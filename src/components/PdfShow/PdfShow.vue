@@ -220,6 +220,7 @@ const pagesNum = ref(0);
 
 const clickCloseBtn = () => {
   props.closeImageShow();
+  console.log(123);
 };
 
 const showPdf = async () => {
