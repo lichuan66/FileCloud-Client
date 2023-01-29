@@ -17,12 +17,4 @@ app.use(ArcoVueIcon);
 app.use(routes);
 app.mount("#app");
 
-// ws.onopen = () => {
-//   ws.send("发送数据");
-//   console.log("WebSocket onopen");
-// };
-// ws.onmessage = function (evt) {
-//   console.log("数据已接收..." + evt.data);
-// };
-
 export { ws };

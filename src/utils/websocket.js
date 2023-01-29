@@ -3,7 +3,7 @@ import eventBus from "@/utils/eventBus";
 class WS {
   ws = null;
   init() {
-    this.ws = new WebSocket(`ws://127.0.0.1:3001/userId=admin`);
+    this.ws = new WebSocket(`ws://114.132.151.234:3001/userId=admin`);
   }
   connect() {
     this.ws.onopen = () => {
