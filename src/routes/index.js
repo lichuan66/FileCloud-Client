@@ -9,7 +9,7 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("@/View/Login/LoginView.vue"),
+    component: () => import("@/View/Login/LoginViewNew.vue"),
   },
   {
     path: "/manage",
@@ -23,7 +23,7 @@ const routes = [
           title: "文件",
           label: "document",
         },
-        component: () => import("@/components/FileManage/FileManage.vue"),
+        component: () => import("@/View/FileManage/FileManage.vue"),
       },
       {
         path: "image",
@@ -33,7 +33,7 @@ const routes = [
           title: "相册",
           label: "photo",
         },
-        component: () => import("@/components/FileManage/FileManage.vue"),
+        component: () => import("@/View/FileManage/FileManage.vue"),
       },
     ],
   },

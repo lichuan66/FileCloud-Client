@@ -159,11 +159,10 @@ import {
   IconUpload,
   IconShareExternal,
 } from "@arco-design/web-vue/es/icon";
-import { ws } from "@/main";
 import { Message } from "@arco-design/web-vue";
 import eventBus from "@/utils/eventBus";
-import FileBox from "@/components/FileManage/components/FileBox.vue";
-import ModalContent from "@/components/FileManage/components/ModalContent.vue";
+import FileBox from "@/View/FileManage/components/FileBox.vue";
+import ModalContent from "@/View/FileManage/components/ModalContent.vue";
 import ImageShow from "@/components/ImageShow/ImageShow.vue";
 import PdfShow from "@/components/PdfShow/PdfShow.vue";
 
@@ -366,17 +365,14 @@ const enterFolderRoute = async (fileMeta) => {
     const { data } = await getFileData(currentRoute.value, fileMeta.name);
     imageShowMeta.value = data;
     imageShow.value = true;
-    eventBus.on("getFile", (eventBusData) => {
-      imageShowMeta.value = eventBusData;
-    });
+    // eventBus.on("getFile", (eventBusData) => {
+    //   imageShowMeta.value = eventBusData;
+    // });
   }
   if (/pdf/.test(fileMeta.type)) {
     const { data } = await getFileData(currentRoute.value, fileMeta.name);
     pdfShowMeta.value = data;
     pdfShow.value = true;
-    eventBus.on("getFile", (eventBusData) => {
-      pdfShowMeta.value = eventBusData;
-    });
   }
 };
 

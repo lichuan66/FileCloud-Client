@@ -220,16 +220,10 @@ const pagesNum = ref(0);
 
 const clickCloseBtn = () => {
   props.closeImageShow();
-  console.log(123);
 };
 
 const showPdf = async () => {
-  // let pdfList = document.querySelector(".container");
-  // fragment.value = document.createDocumentFragment();
-  let decodedBase64 = atob(props.pdfShowMeta.data);
-  pdfJS.getDocument({ data: decodedBase64 }).promise.then(async (pdf) => {
-    decodedBase64 = null;
-    props.deletePdfData();
+  pdfJS.getDocument(props.pdfShowMeta.url).promise.then(async (pdf) => {
     PDFOBJ = pdf;
     pagesNum.value = pdf.numPages;
     if (pagesNum.value >= 10) {
@@ -269,7 +263,6 @@ const showPdf = async () => {
           const context = canvas.getContext("2d"); //创建绘制canvas的对象
           const pageWidth = Math.floor(viewport.width * CSS_UNITS.value);
           const pageHeight = Math.floor(viewport.height * CSS_UNITS.value);
-          console.log(viewport.width, viewport.height, CSS_UNITS.value);
           canvas.width = pageWidth;
           canvas.height = pageHeight;
           const renderContext = {
@@ -312,13 +305,11 @@ const handleScrolls = async (e) => {
         canvas.setAttribute("id", `canvas_${i}`); //给canvas节点定义一个class名,这里我取名为canvasv
         const scale = 1; //缩放倍数，1表示原始大小
         const rotation = 0;
-        console.log(123);
         const page = await PDFOBJ.getPage(i);
         const viewport = page.getViewport({ scale, rotation });
         const context = canvas.getContext("2d"); //创建绘制canvas的对象
         const pageWidth = Math.floor(viewport.width * CSS_UNITS.value);
         const pageHeight = Math.floor(viewport.height * CSS_UNITS.value);
-        console.log(viewport.width, viewport.height, CSS_UNITS.value);
         canvas.width = pageWidth;
         canvas.height = pageHeight;
         const renderContext = {
@@ -340,14 +331,9 @@ window.addEventListener("scroll", handleScrolls, true); //监听滚动事件
 
 window.removeEventListener("scroll", handleScrolls);
 
-watch(
-  () => props.pdfShowMeta.data,
-  async () => {
-    if (props.pdfShowMeta.data) {
-      await showPdf();
-    }
-  }
-);
+nextTick(() => {
+  showPdf();
+});
 </script>
 
 <style lang="less" scoped>

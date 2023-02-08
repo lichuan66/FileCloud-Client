@@ -7,9 +7,9 @@ import ArcoVueIcon from "@arco-design/web-vue/es/icon";
 import "@/assets/style/style.less";
 import ws from "./utils/websocket";
 
-ws.init();
-ws.connect();
-ws.receiveData();
+// ws.init();
+// ws.connect();
+// ws.receiveData();
 
 const app = createApp(App);
 app.use(ArcoVue);

@@ -7,3 +7,11 @@ export function userLogin(body) {
     data: body,
   });
 }
+
+export function userSignUp(body) {
+  return service({
+    url: "/user/signUp",
+    method: "post",
+    data: body,
+  });
+}

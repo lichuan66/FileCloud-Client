@@ -151,7 +151,7 @@ const drawImage = () => {
 
   const imageObj = new Image();
   console.log(props.imageShowMeta);
-  imageObj.src = props.imageShowMeta.data || "";
+  imageObj.src = props.imageShowMeta.url;
   imageObj.onload = () => {
     console.log(imageObj.width, imageObj.height);
     const imageWidth = imageObj.width;
@@ -174,12 +174,12 @@ nextTick(() => {
   drawImage();
 });
 
-watch(
-  () => props.imageShowMeta.data,
-  () => {
-    drawImage();
-  }
-);
+// watch(
+//   () => props.imageShowMeta.data,
+//   () => {
+//     drawImage();
+//   }
+// );
 </script>
 
 <style lang="less" scoped>

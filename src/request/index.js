@@ -3,7 +3,7 @@ import { IP, PORT } from "@/config/ipConfig";
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: `http://114.132.151.234:8877/api`,
+  baseURL: `http://${IP}:${PORT}/api`,
   timeout: 50000,
   headers: {
     "Content-Type": "application/json;charset=utf-8",
